@@ -5,7 +5,7 @@ Built for reliability, with automatic API fallback and best-in-class error handl
 
 ---
 
-![Dashboard Screenshot] ![alt text](Screenshot.png.png)
+[Dashboard Screenshot] ![alt text](Screenshot.png.png)
 
 ---
 
@@ -28,6 +28,7 @@ Built for reliability, with automatic API fallback and best-in-class error handl
 ```bash
 git clone https://github.com/yourusername/tokenomics-dashboard.git
 cd tokenomics-dashboard
+
 
 
 [def]: Screenshot.png.png
