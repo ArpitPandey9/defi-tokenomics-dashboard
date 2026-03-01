@@ -3,11 +3,11 @@
 A robust, professional Streamlit dashboard for analyzing tokenomics and DeFi metrics of major crypto protocols.  
 Built for reliability, with automatic API fallback and best-in-class error handling — inspired by S&P Global–style quant dashboards.
 
----
+--
 
 [Dashboard Screenshot] ![alt text](Screenshot.png.png)
 
----
+--
 
 ## 🚀 Features
 
@@ -32,3 +32,4 @@ cd tokenomics-dashboard
 
 
 [def]: Screenshot.png.png
+
