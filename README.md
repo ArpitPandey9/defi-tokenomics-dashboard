@@ -35,7 +35,7 @@ streamlit run tokenomics-dashboard.py
 
 ## Validation
 
-Repository CI installs the declared dependencies, checks dependency consistency, parses the Python source, and verifies that known placeholder or employer-style claims are absent.
+Repository CI installs the declared dependencies, checks dependency consistency, parses the Python source, and verifies that known fabricated fallback values and unsupported employer-specific claims are absent.
 
 CI does not simulate or certify third-party API availability.
 
