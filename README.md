@@ -1,35 +1,48 @@
-# 🦄 Tokenomics Dashboard
+# DeFi Tokenomics Dashboard
 
-A robust, professional Streamlit dashboard for analyzing tokenomics and DeFi metrics of major crypto protocols.  
-Built for reliability, with automatic API fallback and best-in-class error handling — inspired by S&P Global–style quant dashboards.
+Streamlit dashboard for inspecting selected public token and DeFi metrics for AAVE, Uniswap (UNI), and Compound (COMP).
 
---
+## Current implementation
 
-[Dashboard Screenshot] ![alt text](Screenshot.png.png)
+The dashboard attempts to retrieve:
 
---
+- current token price, market capitalization, and supply data from CoinGecko
+- protocol TVL from DeFiLlama
+- historical token prices from CoinGecko, with DeFiLlama and Binance fallback paths
+- token-supply and historical-price visualizations when the required data is available
 
-## 🚀 Features
+Missing provider data is displayed as unavailable rather than replaced with fabricated values.
 
-- **Live price, market cap, and supply** for AAVE, Uniswap (UNI), and Compound (COMP)
-- **Real-time TVL (Total Value Locked)** from DeFiLlama
-- **Historical price charts** — always display with automatic fallback (CoinGecko → DeFiLlama → Binance)
-- **Token supply pie chart** (displays only when supply data is available)
-- **Graceful handling of missing data:** clear warnings for users, never a broken chart or crash
-- **Visual indicators for all data sources**
-- **Easy to extend for more tokens or metrics**
+## Data-source behavior
 
----
+Public APIs can rate-limit, change schema, or return incomplete observations. The dashboard therefore uses guarded requests and fallback paths, but it does **not** guarantee that every metric or chart will always be available.
 
-## 🛠️ Setup Instructions
+The application caches API responses for five minutes.
 
-### 1. Clone the Repository
+## Setup
 
 ```bash
-git clone https://github.com/yourusername/tokenomics-dashboard.git
-cd tokenomics-dashboard
+git clone https://github.com/ArpitPandey9/defi-tokenomics-dashboard.git
+cd defi-tokenomics-dashboard
 
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 
+streamlit run tokenomics-dashboard.py
+```
 
-[def]: Screenshot.png.png
+## Validation
 
+Repository CI installs the declared dependencies, checks dependency consistency, parses the Python source, and verifies that known placeholder or employer-style claims are absent.
+
+CI does not simulate or certify third-party API availability.
+
+## Limitations
+
+This is a public-data research dashboard, not an investment recommendation, production market-data service, or representation of any employer or client.
+
+## License
+
+See `LICENSE`.

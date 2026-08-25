@@ -147,8 +147,8 @@ if current_price == 0:
     # No market cap/supply fallback here (Binance doesn't provide)
 
 if not tvl or tvl == 0:
-    tvl = 6200000000  # placeholder
-    tvl_source = "Placeholder"
+    tvl = None
+    tvl_source = "Unavailable"
 else:
     tvl_source = "DeFiLlama"
 

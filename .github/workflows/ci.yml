@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip check
+
+      - name: Parse Python source
+        run: python -c "import ast,pathlib; p=pathlib.Path('tokenomics-dashboard.py'); ast.parse(p.read_text(encoding='utf-8-sig'), filename=str(p))"
+
+      - name: Check claim and placeholder hygiene
+        run: |
+          ! grep -Eiq 'best-in-class|S&P Global.style|yourusername|6200000000|Placeholder' README.md tokenomics-dashboard.py

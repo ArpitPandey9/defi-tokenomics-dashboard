@@ -1,0 +1,5 @@
+ccxt
+pandas
+plotly
+requests
+streamlit
